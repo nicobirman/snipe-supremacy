@@ -20,11 +20,9 @@ TIENDAS = [
     ("Productos de Lujo", "https://productosdelujo.cl/products/supremacy-collectors-edition-afnan-100ml-edp-unisex"),
     ("Yauras",            "https://yauras.cl/products/afnan-supremacy-collector-edition-edp-100ml"),
     ("Lodoro",            "https://lodoro.cl/products/afnan-supremacy-collector-edition-eau-de-parfum-100ml-hombre"),
-    ("Oferta Perfumes",   "https://www.ofertaperfumes.cl/products/perfume-supremacy-collectors-edp-100-ml-hombre"),
     ("Elite Perfumes",    "https://eliteperfumes.cl/products/afnan-afnan-supremacy-collector-edp-100ml-h"),
     ("Cosmetic",          "https://cosmetic.cl/products/perfume-supremacy-collectors-edition-afnan-edp-100-ml-hombre"),
     ("Multimarcas",       "https://multimarcasperfumes.cl/products/supremacy-collectors-edition-pour-homme-edp-100-ml-afnan"),
-    ("DPG Duty Free (Zofri)", "https://dpgdutyfree.cl/products/afnan-supremacy-collectors-edition-edp-100ml-h"),
 ]
 
 # ------------------------------------------------
