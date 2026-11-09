@@ -1,0 +1,44 @@
+name: Snipe Supremacy
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # cada 10 minutos (GitHub a veces se atrasa un poco)
+  workflow_dispatch:          # botón para correrlo a mano y probar
+
+permissions:
+  contents: write             # para guardar estado.json en el repo
+
+# Nunca dos revisiones al mismo tiempo (evita choques al guardar estado.json)
+concurrency:
+  group: snipe
+  cancel-in-progress: false
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install --quiet requests
+
+      - name: Revisar tiendas
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python snipe_supremacy.py
+
+      - name: Guardar estado
+        run: |
+          git config user.name "snipe-bot"
+          git config user.email "snipe-bot@users.noreply.github.com"
+          git add estado.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Actualizar estado"
+            git pull --rebase --quiet   # por si editaste algo en GitHub mientras corría
+            git push
+          fi
